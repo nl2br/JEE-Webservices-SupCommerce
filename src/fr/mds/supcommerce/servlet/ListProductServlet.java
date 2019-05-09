@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.jws.WebService;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.mds.supcommerce.dao.ProductDao;
 import fr.mds.supcommerce.model.Product;
 
+@WebServlet(urlPatterns ="/listProduct")
 @SuppressWarnings("serial")
 public class ListProductServlet extends HttpServlet{
 	

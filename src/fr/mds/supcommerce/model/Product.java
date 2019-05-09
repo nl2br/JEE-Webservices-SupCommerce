@@ -1,10 +1,14 @@
 package fr.mds.supcommerce.model;
 
 public class Product {
-	protected Long id;
-	protected String name;
-	protected String description;
-	protected Float price;
+	private Long id;
+	private String name;
+	private String description;
+	private Float price;
+	
+	public Product() {
+		
+	}
 	
 	public Product(String name, String description, Float price) {
 		this.name = name;
