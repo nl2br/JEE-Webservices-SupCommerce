@@ -17,7 +17,7 @@ public class ListProductServlet extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		System.out.println("ListProductServlet");
 		List<Product> productLists = ProductDao.getAllProducts();
 		
 		PrintWriter out = resp.getWriter();

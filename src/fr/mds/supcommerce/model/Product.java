@@ -6,9 +6,7 @@ public class Product {
 	protected String description;
 	protected Float price;
 	
-	public Product(Long id, String name, String description, Float price) {
-		super();
-		this.id = id;
+	public Product(String name, String description, Float price) {
 		this.name = name;
 		this.description = description;
 		this.price = price;

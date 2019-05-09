@@ -16,7 +16,7 @@ public class InsertSomeProductServlet extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Product product = new Product(new Long(5), "product5", "desc1", 15.90f);
+		Product product = new Product("product", "desc", 15.90f);
 		ProductDao.addProduct(product);
 		
 		PrintWriter out = resp.getWriter();

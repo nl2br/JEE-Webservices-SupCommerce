@@ -20,20 +20,32 @@ public class ShowProductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("ShowProductServlet - doGet : req.getParameter(\"id\") " + req.getParameter("id"));
-		Long id = Long.parseLong(req.getParameter("id"));
 		
-		List<Product> productLists = new ArrayList<Product>();
-		productLists = ProductDao.getAllProducts();
+		Long id = 0L;
+		try {
+			id = Long.parseLong(req.getParameter("id"));
+
+		} catch (Exception e) {
+			resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();
+			out.println("Error " + e);
+		}
+
+		Product product = ProductDao.findProduct(id);
+		
+		if( product == null) {
+			resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();
+			out.println("Error, product doesn exist");
+		}
 		
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		for(Product product : productLists) {
-			System.out.println("ShowProductServlet - doGet : product: " + product.getId() + " id: " + id);
-			if(product.getId().equals(id)) {
-				System.out.println("ShowProductServlet - doGet : find");
-				out.println(product.toString());
-			}
-		}
+		out.println(product);
+		
+		
+		
+
 	}
 
 }
