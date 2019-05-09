@@ -26,11 +26,11 @@ public class ShowProductServlet extends HttpServlet{
 		Long id = 0L;
 		try {
 			id = Long.parseLong(req.getParameter("id"));
-
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			resp.setContentType("text/html");
 			PrintWriter out = resp.getWriter();
 			out.println("Error " + e);
+			return;
 		}
 
 		Product product = ProductDao.findProduct(id);
@@ -39,6 +39,7 @@ public class ShowProductServlet extends HttpServlet{
 			resp.setContentType("text/html");
 			PrintWriter out = resp.getWriter();
 			out.println("Error, product doesn exist");
+			return;
 		}
 		
 		resp.setContentType("text/html");
